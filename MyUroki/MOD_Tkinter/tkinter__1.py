@@ -8,7 +8,4 @@ def print_as():
 bt = Button(root, text="jhhh", command= print_as)
 bt.pack()
 
-
-
 root.mainloop()
-#
