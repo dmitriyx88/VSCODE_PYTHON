@@ -1,0 +1,27 @@
+1595179821395	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\NP300E5V\\AppData\\Local\\Temp\\rust_mozprofile4TV2Of"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1595179834038	Marionette	INFO	Listening on port 53566
+1595179834324	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 7716, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc, line 166
+[Parent 7716, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc, line 166
+1595179903574	Marionette	INFO	Stopped listening on port 53566
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1595179918867	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\NP300E5V\\AppData\\Local\\Temp\\rust_mozprofileDL5O4F"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1595179925937	Marionette	INFO	Listening on port 53625
+1595179926385	Marionette	WARN	TLS certificate errors will be ignored for this session
+1595180031835	Marionette	INFO	Stopped listening on port 53625
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1595180035188	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\NP300E5V\\AppData\\Local\\Temp\\rust_mozprofilemQiGx2"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1595180041074	Marionette	INFO	Listening on port 53711
+1595180041418	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 7648, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc, line 166
+1595180346150	Marionette	INFO	Stopped listening on port 53711
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

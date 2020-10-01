@@ -1,0 +1,9 @@
+ii drugie;dostupnie metodu 
+dOnly
+"w";WriteOnly.i drugie;dostupnie metodu 
+lu.Mozhet sozdavatb nowie
+"a";Dobawit V konec. 
+"r+";Chtenie i zapis failov. Nowie failu ne sozdaet
+"w+";Chtenie i zapis failov. Perezapisuvaet sozdannie failu.Mozhet sozdavatb nowie
+i drugie;dostupnie metodu 
+i drugie;dostupnie metodu 
