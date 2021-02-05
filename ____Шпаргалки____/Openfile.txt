@@ -1,0 +1,3 @@
+with open(f"{os.path.dirname(__file__)}\olx.txt") as of:
+    read=of.read()
+    print(read) 
