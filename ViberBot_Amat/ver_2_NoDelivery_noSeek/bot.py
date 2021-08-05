@@ -16,12 +16,14 @@ import time
 import logging
 import sched
 import threading
+import logic
 
-import reqConversationStarted
-import reqSubscribed
-import reqViberMessage
-
-
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 app = Flask(__name__)
 
@@ -38,18 +40,15 @@ def incoming():
         
 
     if isinstance(viber_request, ViberMessageRequest):
-        reqViberMessage.ViberMessage(viber, viber_request)
-        #logic.ViberMessage(viber, viber_request)
+        logic.ViberMessage(viber, viber_request)
     
         
     elif isinstance(viber_request, ViberConversationStartedRequest):
-        reqConversationStarted.ConversationStarted(viber, viber_request)
-        #logic.ConversationStarted(viber, viber_request)
+        logic.ConversationStarted(viber, viber_request)
         
 
     elif isinstance(viber_request, ViberSubscribedRequest):
-        reqSubscribed.Subscribed(viber, viber_request)
-        #logic.Subscribed(viber, viber_request)
+        logic.Subscribed(viber, viber_request)
 
 
     elif isinstance(viber_request, ViberDeliveredRequest):
@@ -67,10 +66,10 @@ def incoming():
     return Response(status=200)
 
 def set_webhook(viber):
-    viber.set_webhook('https://a3aa75827af2.ngrok.io')
+    viber.set_webhook('https://4b6498b91e0e.ngrok.io/')
 if __name__ == "__main__":
     scheduler = sched.scheduler(time.time, time.sleep)
-    scheduler.enter(6, 1, set_webhook, (viber,))
+    scheduler.enter(10, 1, set_webhook, (viber,))
     t = threading.Thread(target=scheduler.run)
     t.start()
     context = ('server.crt', 'server.key')
