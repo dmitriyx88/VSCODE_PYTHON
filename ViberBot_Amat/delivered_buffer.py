@@ -12,7 +12,7 @@ def FindMess(id, func):
             deliv= val["deliv"]
             seen=val["seen"]
             print("+++++Функция поиска сообщений: Сообщение найдено, ", token, deliv, seen)
-            return list(token, deliv, seen)
+            return token
         else: 
             print("+++++Функция поиска сообщений: Сообщение не найдено")
             return None   

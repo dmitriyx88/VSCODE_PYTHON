@@ -20,7 +20,16 @@ import threading
 import reqConversationStarted
 import reqSubscribed
 import reqViberMessage
+from file_io import file_io
 
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+user_amator= {}
 
 
 app = Flask(__name__)
@@ -33,23 +42,31 @@ viber = Api(BotConfiguration(
 
 @app.route('/', methods=['POST'])
 def incoming():
+    logger.debug("Получил запрос. Отправка данных: {0}".format(request.get_data()))
+    viber_request = viber.parse_request(request.get_data())
+    viber_request = viber.parse_request(request.get_data().decode('utf8'))    
     
-    viber_request = viber.parse_request(request.get_data().decode('utf8'))
-        
+    global user_amator
+    if len(user_amator)==0:
+        user_amator=file_io("read", user_amator, "StartBot")    
 
     if isinstance(viber_request, ViberMessageRequest):
-        reqViberMessage.ViberMessage(viber, viber_request)
-        #logic.ViberMessage(viber, viber_request)
+        file_io("read", user_amator, "FuncMessageRequest")
+        user_amator=reqViberMessage.ViberMessage(viber, viber_request, user_amator)
+        file_io("write", user_amator, "FuncMessageRequest")
+    
     
         
     elif isinstance(viber_request, ViberConversationStartedRequest):
-        reqConversationStarted.ConversationStarted(viber, viber_request)
-        #logic.ConversationStarted(viber, viber_request)
+        file_io("read", user_amator, "FuncConversationRequest")
+        user_amator=reqConversationStarted.ConversationStarted(viber, viber_request, user_amator)
+        file_io("write", user_amator, "FuncConversationRequest")
         
 
     elif isinstance(viber_request, ViberSubscribedRequest):
-        reqSubscribed.Subscribed(viber, viber_request)
-        #logic.Subscribed(viber, viber_request)
+        file_io("read", user_amator, "FuncSubscribedRequest")
+        user_amator=reqSubscribed.Subscribed(viber, viber_request, user_amator)
+        file_io("write", user_amator, "FuncSubscribedRequest")
 
 
     elif isinstance(viber_request, ViberDeliveredRequest):
@@ -67,7 +84,7 @@ def incoming():
     return Response(status=200)
 
 def set_webhook(viber):
-    viber.set_webhook('https://a3aa75827af2.ngrok.io')
+    viber.set_webhook('https://c822eb52fefe.ngrok.io/')
 if __name__ == "__main__":
     scheduler = sched.scheduler(time.time, time.sleep)
     scheduler.enter(6, 1, set_webhook, (viber,))
