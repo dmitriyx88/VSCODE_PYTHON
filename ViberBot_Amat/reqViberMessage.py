@@ -4,7 +4,8 @@ from viberbot.api.messages.contact_message import ContactMessage
 
 from delivered_buffer import SendMess
 from delivered_buffer import FindMess
-from keyboard_dict import keyboard_dict
+from keyboard_dict import keyboard_reg
+from keyboard_dict import keyboard_main
 from msg_text import msg_text
 from import_xls import find_user
 
@@ -28,7 +29,7 @@ def ViberMessage(viber, viber_request, user_amator):
         and user_amator[viber_request.sender.id]["registered"]==False 
         and user_amator[viber_request.sender.id]["phone_number"]==None
         and user_amator[viber_request.sender.id]["href"]==None):
-            result=viber.send_messages(viber_request.sender.id, [TextMessage(min_api_version=3, keyboard=keyboard_dict["REG_KEYBOARD"], text=msg_text[2])])
+            result=viber.send_messages(viber_request.sender.id, [TextMessage(min_api_version=3, keyboard=keyboard_reg, text=msg_text[2])])
             if result[0]>0:
                 SendMess(viber_request.sender.id, viber_request.sender.name, "ViberMessage:SendPhoneKeyboard", msg_text[2].format(viber_request.sender.name), result[0] )
                 user_amator[viber_request.sender.id]["phone_number"]= False
@@ -50,7 +51,8 @@ def ViberMessage(viber, viber_request, user_amator):
         
         if (user_amator[viber_request.sender.id]["registered"]==True
         and user_amator[viber_request.sender.id]["href"]==0):
-            result = viber.send_messages(viber_request.sender.id, [TextMessage(text=msg_text[4].format(user_amator[viber_request.sender.id]["db_data"][0]["name2"], user_amator[viber_request.sender.id]["db_data"][0]["name3"]))])
+            #result = viber.send_messages(viber_request.sender.id, [TextMessage(text=msg_text[4].format(user_amator[viber_request.sender.id]["db_data"][0]["name2"], user_amator[viber_request.sender.id]["db_data"][0]["name3"]))])
+            result=viber.send_messages(viber_request.sender.id, [TextMessage(min_api_version=4, keyboard=keyboard_main, text=msg_text[4].format(user_amator[viber_request.sender.id]["db_data"][0]["name2"], user_amator[viber_request.sender.id]["db_data"][0]["name3"]))])
             if result[0]>0:
                 SendMess(viber_request.sender.id, viber_request.sender.name, "ViberMessage:MainMenu", msg_text[4], result[0] )
                 user_amator[viber_request.sender.id]["href"]=1
@@ -59,3 +61,4 @@ def ViberMessage(viber, viber_request, user_amator):
                 
                 
     return user_amator    
+
