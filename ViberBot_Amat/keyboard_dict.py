@@ -13,7 +13,7 @@ keyboard_reg={
 	}, {
 		"Columns": 6,
 		"Rows": 1,
-		"Text": "<font color=\"#494E67\"><font size=\"16\"><b><b>Отказываюсь от регистрации</b></b></font><br><br>",
+		"Text": "<font color=\"#494E67\"><font size=\"14\"><b><b>Отказываюсь от регистрации</b></b></font><br><br>",
 		"TextSize": "medium",
 		"TextHAlign": "center",
 		"TextVAlign": "top",
@@ -27,7 +27,7 @@ keyboard_main={
 	"Buttons": [{
 		"Columns": 6,
 		"Rows": 1,
-		"Text": "<font color=\"#494E67\"><font size=\"14\"><b><b>Просмотреть информацию о членском взносе</b></b></font><br><br>",
+		"Text": "<font color=\"#494E67\"><font size=\"16\"><b><b>Просмотреть информацию по участку</b></b></font><br><br>",
 		"TextSize": "medium",
 		"TextHAlign": "center",
 		"TextVAlign": "top",
@@ -37,12 +37,22 @@ keyboard_main={
 	}, {
 		"Columns": 6,
 		"Rows": 1,
-		"Text": "<font color=\"#494E67\"><font size=\"16\"><b><b>Отказываюсь от регистрации</b></b></font><br><br>",
+		"Text": "<font color=\"#494E67\"><font size=\"16\"><b><b>Передать показание счетчика</b></b></font><br><br>",
 		"TextSize": "medium",
 		"TextHAlign": "center",
 		"TextVAlign": "top",
 		"ActionType": "reply",
-		"ActionBody": "NonSendPhone",
+		"ActionBody": "SendEnergy",
+		"BgColor": "#f7bb3f"
+	}, {
+		"Columns": 6,
+		"Rows": 1,
+		"Text": "<font color=\"#494E67\"><font size=\"16\"><b><b>Анкетные данные</b></b></font><br><br>",
+		"TextSize": "medium",
+		"TextHAlign": "center",
+		"TextVAlign": "top",
+		"ActionType": "reply",
+		"ActionBody": "AnketaInfo",
 		"BgColor": "#f7bb3f"
 	}]}
 
