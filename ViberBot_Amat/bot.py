@@ -84,7 +84,7 @@ def incoming():
     return Response(status=200)
 
 def set_webhook(viber):
-    viber.set_webhook('https://d30255560b35.ngrok.io')
+    viber.set_webhook('https://569e-128-124-84-177.ngrok.io/')
 if __name__ == "__main__":
     scheduler = sched.scheduler(time.time, time.sleep)
     scheduler.enter(6, 1, set_webhook, (viber,))
